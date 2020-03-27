@@ -13,7 +13,7 @@ jobs:
           command: docker build -t $IMAGE_NAME:latest .
   publish-latest:
     environment:
-      IMAGE_NAME: gatsby-docker
+      IMAGE_NAME: ttraulsen/gatsby-docker
     docker:
       - image: circleci/buildpack-deps:stretch
     steps:
@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Publish Docker Image to Docker Hub
           command: |
-            echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_TOKEN"
             docker push $IMAGE_NAME:latest
 workflows:
   version: 2
