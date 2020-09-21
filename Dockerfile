@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:erbium-alpine
 LABEL maintainer="timo.traulsen@gmail.com"
 
 USER root
